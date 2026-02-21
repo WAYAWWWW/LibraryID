@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        if (Schema::hasTable('user') && ! Schema::hasColumn('user', 'is_active')) {
+            Schema::table('user', function (Blueprint $table) {
+                $table->boolean('is_active')->default(true)->after('role');
+            });
+        }
+
+        if (Schema::hasTable('users') && ! Schema::hasColumn('users', 'is_active')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->boolean('is_active')->default(true)->after('role');
+            });
+        }
+    }
+
+    public function down(): void
+    {
+        if (Schema::hasTable('user') && Schema::hasColumn('user', 'is_active')) {
+            Schema::table('user', function (Blueprint $table) {
+                $table->dropColumn('is_active');
+            });
+        }
+
+        if (Schema::hasTable('users') && Schema::hasColumn('users', 'is_active')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropColumn('is_active');
+            });
+        }
+    }
+};

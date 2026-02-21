@@ -1,0 +1,499 @@
+/* Full Height Layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9ff;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f8f9ff;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        
+        /* Container utama tumbuh mengisi sisa space */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 1rem 0;
+        }
+        
+        /* Detail container mengisi tinggi */
+        .detail-container {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Book wrapper mengisi tinggi */
+        .book-detail-wrapper {
+            flex: 1;
+            background: white;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Book content tumbuh */
+        .book-detail-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+            flex: 1;
+        }
+        
+        /* Book info tumbuh */
+        .book-info-detail {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        /* Action buttons di bagian bawah book info */
+        .action-buttons {
+            margin-top: auto;
+            padding-top: 2rem;
+        }
+        
+        /* Sinopsis dan ulasan area */
+        .synopsis-section,
+        .reviews-section {
+            flex-shrink: 0;
+        }
+        
+        /* Scrollable content jika terlalu panjang */
+        .scrollable-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollable-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+:root {
+    --primary: #2563eb;
+}
+
+
+/* Main content area fills remaining space */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 1rem 0;
+}
+
+/* Detail container */
+.detail-container {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    border: 2px solid var(--primary);
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+.back-button:hover {
+    background: transparent;
+    color: var(--primary);
+}
+
+/* Book detail wrapper fills height */
+.book-detail-wrapper {
+    flex: 1;
+    background: white;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.book-detail-content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    flex: 1;
+}
+
+.book-cover-detail {
+    width: 200px;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-cover-detail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-info-detail {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.book-info-detail h1 {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.book-author {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Genre Tags */
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.genre-tag {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: #f0f2ff;
+    color: #4f46e5;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid #e0e7ff;
+}
+
+/* Detail Buku Section */
+.detail-buku-section {
+    margin-bottom: 2rem;
+    flex: 1;
+}
+
+.detail-buku-title {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+.detail-buku-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.detail-label {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 400;
+    min-width: 200px;
+}
+
+.detail-value {
+    font-size: 0.95rem;
+    color: #1a1a1a;
+    font-weight: 400;
+}
+
+/* Action Buttons - Pushed to bottom */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 2rem;
+}
+
+.btn-pinjam {
+    flex: 1;
+    min-width: 150px;
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-pinjam:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-wishlist {
+    min-width: 150px;
+    padding: 1rem 2rem;
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-wishlist:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Divider Line */
+.divider-line {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 2.5rem 0;
+    flex-shrink: 0;
+}
+
+/* Synopsis Section */
+.synopsis-section {
+    margin-top: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.synopsis-title {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.synopsis-text {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Reviews Section */
+.reviews-section {
+    margin-top: 0;
+    flex-shrink: 0;
+}
+
+.reviews-title {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.review-item {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.review-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    align-items: center;
+}
+
+.review-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.review-user-info {
+    flex: 1;
+}
+
+.review-username {
+    font-size: 1rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.review-rating {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.star-sm {
+    font-size: 1rem;
+    color: #ffc107;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+    margin-left: 64px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 0.5rem 0;
+    }
+    
+    .detail-container {
+        padding: 0 1rem;
+    }
+    
+    .book-detail-wrapper {
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+    }
+    
+    .book-detail-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .book-cover-detail {
+        margin: 0 auto;
+        width: 150px;
+    }
+    
+    .book-info-detail h1 {
+        font-size: 1.75rem;
+        text-align: center;
+    }
+    
+    .book-author {
+        text-align: center;
+    }
+    
+    .genre-tags {
+        justify-content: center;
+    }
+    
+    .detail-buku-content {
+        gap: 0.75rem;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .detail-label {
+        min-width: auto;
+        font-weight: 500;
+    }
+    
+    .detail-value {
+        text-align: left;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+    
+    .btn-pinjam,
+    .btn-wishlist {
+        width: 100%;
+    }
+    
+    .review-text {
+        margin-left: 0;
+    }
+    
+    .synopsis-text {
+        text-align: left;
+    }
+    
+    .nav-container {
+        padding: 1rem;
+    }
+}

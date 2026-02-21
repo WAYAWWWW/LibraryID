@@ -1,0 +1,954 @@
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #f59e0b;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --success: #10b981;
+    --danger: #ef4444;
+}
+
+.navbar {
+    background: var(--primary);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+    flex-shrink: 0;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    max-width: 1700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Logo section */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    height: 70px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.logo-profile img {
+    height: 95px;
+    width: 95px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    
+}
+
+.logo img {
+    height: 205px;
+    width: 205px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    margin-left: 20px;
+}
+
+/* Container Tombol */
+/* ===== Notification System Styles ===== */
+
+/* Notification Trigger */
+.notification-trigger {
+    position: relative;
+    color: #333;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.notification-trigger:hover {
+    background: #f5f7ff;
+    color: #667eea;
+}
+
+.notification-icon {
+    font-size: 20px;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.notification-badge.active {
+    display: flex;
+}
+
+/* Notification Popup Modal */
+.notification-popup-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.notification-popup-content {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    max-height: 80vh;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: slideInUp 0.3s ease;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notification-header i {
+    font-size: 14px;
+}
+
+.close-popup {
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.close-popup:hover {
+    opacity: 1;
+}
+
+.notification-list {
+    padding: 0;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+/* Notification Items */
+.notification-item {
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.2s;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.notification-item.unread {
+    background: #f8f9ff;
+    border-left: 4px solid #667eea;
+}
+
+.notification-item:hover {
+    background: #f5f7ff;
+}
+
+.notification-item-left {
+    flex-shrink: 0;
+}
+
+.notification-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.notification-icon-wrapper.critical {
+    background: #ffeaea;
+    color: #ff4757;
+}
+
+.notification-icon-wrapper.warning {
+    background: #fff3cd;
+    color: #ffa502;
+}
+
+.notification-icon-wrapper.info {
+    background: #e7f3ff;
+    color: #007bff;
+}
+
+.notification-icon-wrapper.success {
+    background: #d4edda;
+    color: #28a745;
+}
+
+.notification-item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-item-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.notification-item-message {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.notification-item-meta {
+    font-size: 11px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notification-item-meta i {
+    font-size: 10px;
+}
+
+.notification-item-meta strong {
+    color: #555;
+}
+
+.notification-item-action {
+    flex-shrink: 0;
+}
+
+.btn-return-book {
+    padding: 6px 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.btn-return-book:hover {
+    background: #5a6fd8;
+    transform: translateY(-1px);
+}
+
+/* Empty State */
+.notification-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: #888;
+}
+
+.notification-empty i {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.notification-empty p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Footer */
+.notification-footer {
+    padding: 16px;
+    border-top: 1px solid #f1f1f1;
+    text-align: center;
+}
+
+.btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #f8f9fa;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.btn-view-all:hover {
+    background: #e9ecef;
+    color: #212529;
+}
+
+.btn-view-all i {
+    font-size: 12px;
+}
+
+/* User-specific styles */
+.user-notification-item .notification-item-meta {
+    font-size: 12px;
+}
+
+.user-notification-item .btn-return-book {
+    padding: 8px 14px;
+    font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .notification-popup-content {
+        width: 95%;
+        max-height: 70vh;
+    }
+    
+    .notification-item {
+        padding: 12px;
+    }
+    
+    .notification-icon-wrapper {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+    
+    .notification-item-title {
+        font-size: 13px;
+    }
+    
+    .notification-item-message {
+        font-size: 12px;
+    }
+}
+
+
+/* Navigation Menu */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0.8rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: flex-end; /* Menggeser menu ke kanan */
+}
+
+/* Navigation Links - Clean and Modern */
+.nav-menu a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    min-width: 100px;
+    justify-content: center;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1;
+    margin: 0;
+}
+
+/* Hover Effects untuk semua tombol */
+.nav-menu a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Active State */
+.nav-menu a:active {
+    transform: translateY(0);
+    transition: transform 0.1s;
+}
+
+/* Active/Current Page */
+.nav-menu a.active {
+    background: linear-gradient(135deg, var(--primary-dark), rgba(255, 255, 255, 0.1));
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Nav Right - Tombol Logout dan Logo Notif */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-shrink: 0;
+    margin-left: auto; /* Menggeser ke kanan sepenuhnya */
+}
+
+/* Logout Button di nav-right - Ukuran sama dengan tombol lain */
+.nav-right form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-right .btn-logout {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+    padding: 0.65rem 1.5rem 0.65rem 2.8rem;
+    border-radius: 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    white-space: nowrap;
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.15), rgba(220, 53, 69, 0.25));
+    backdrop-filter: blur(10px);
+    min-width: 100px;
+    justify-content: center;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1;
+    margin: 0;
+    height: auto;
+}
+
+.nav-right .btn-logout:hover {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.25), rgba(220, 53, 69, 0.35));
+    border-color: rgba(220, 53, 69, 0.5);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 20px rgba(220, 53, 69, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.nav-right .btn-logout:active {
+    transform: translateY(0);
+    transition: transform 0.1s;
+}
+
+/* Ikon untuk Logout Button */
+.nav-right .btn-logout::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 1.2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,0.9)'%3E%3Cpath d='M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.nav-right .btn-logout:hover::before {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* Profile Button - Modern with Icon */
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem 0.65rem 2.8rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 100px;
+    justify-content: center;
+}
+
+.profile-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Ikon untuk Profile Button */
+.profile-btn::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 1.2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,0.9)'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.profile-btn:hover::before {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* Alternative class name for profile button */
+.btn-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem 0.65rem 2.8rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 100px;
+    justify-content: center;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-profile:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-profile::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 1.2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,0.9)'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.btn-profile:hover::before {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* Profile Badge in Navbar */
+.profile-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.profile-badge-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.profile-badge-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.profile-badge-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.profile-badge-role {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    text-transform: capitalize;
+}
+
+/* Menu with icons */
+.nav-menu a i {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.nav-menu a:hover i {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .nav-container {
+        padding: 0 1rem;
+        gap: 0.5rem;
+    }
+    
+    .nav-menu {
+        gap: 0.5rem;
+    }
+    
+    .nav-menu a,
+    .profile-btn,
+    .nav-right .btn-logout {
+        padding: 0.6rem 1.2rem 0.6rem 2.5rem;
+        min-width: auto;
+        font-size: 0.9rem;
+    }
+    
+    .nav-right .btn-logout::before,
+    .profile-btn::before {
+        left: 1rem;
+        width: 16px;
+        height: 16px;
+    }
+    
+    .logo img {
+        height: 180px;
+        width: 180px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+    
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-menu a,
+    .profile-btn,
+    .nav-right .btn-logout {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem 0.5rem 2.2rem;
+    }
+    
+    .nav-right .btn-logout::before,
+    .profile-btn::before {
+        left: 0.8rem;
+        width: 15px;
+        height: 15px;
+    }
+    
+    .nav-right {
+        order: 2;
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4rem;
+    }
+    
+    .nav-menu a,
+    .profile-btn,
+    .nav-right .btn-logout {
+        padding: 0.5rem 0.8rem 0.5rem 2rem;
+        font-size: 0.8rem;
+        min-width: auto;
+    }
+    
+    .logo img {
+        height: 160px;
+        width: 160px;
+    }
+    
+    /* Sembunyikan teks, tampilkan icon saja di mobile */
+    .profile-btn span,
+    .nav-right .btn-logout span {
+        display: none;
+    }
+    
+    .profile-btn,
+    .nav-right .btn-logout {
+        padding: 0.5rem 0.8rem;
+        min-width: 40px;
+        justify-content: center;
+    }
+    
+    .profile-btn::before,
+    .nav-right .btn-logout::before {
+        position: static;
+        left: auto;
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .logo {
+        height: 60px;
+    }
+    
+    .logo img {
+        height: 140px;
+        width: 140px;
+    }
+    
+    .nav-menu {
+        order: 2;
+        margin-top: 0;
+    }
+    
+    .nav-right {
+        order: 3;
+        margin-top: 0;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-menu a,
+.profile-btn,
+.nav-right .btn-logout {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+/* Staggered animation */
+.nav-menu li:nth-child(1) a { animation-delay: 0.1s; }
+.nav-menu li:nth-child(2) a { animation-delay: 0.2s; }
+.nav-menu li:nth-child(3) a { animation-delay: 0.3s; }
+.nav-menu li:nth-child(4) a { animation-delay: 0.4s; }
+.profile-btn { animation-delay: 0.5s; }
+.nav-right .btn-logout { animation-delay: 0.6s; }
+
+.admin-navbar-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown-menu a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .admin-navbar-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .admin-navbar-dropdown > a::after {
+            content: ' ▼';
+            font-size: 0.7em;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+
+        .action-buttons form {
+            display: inline;
+            margin: 0;
+        }
+
+        .action-buttons form button {
+            background: none;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .action-buttons form button:hover {
+            transform: scale(1.2);
+        }
+
+        .action-buttons form button.approve {
+            color: #28a745;
+        }
+
+        .action-buttons form button.reject {
+            color: #dc3545;
+        }
