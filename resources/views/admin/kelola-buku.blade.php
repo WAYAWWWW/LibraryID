@@ -16,74 +16,13 @@
     <link rel="stylesheet" href="{{ asset('css/buttons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/petbuk.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin-kelola-buku.css') }}">
     
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/js/app.js'])
     @endif
 
-    <style>
-        .admin-navbar-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 4px;
-            top: 100%;
-            left: 0;
-        }
-        
-        .dropdown-menu a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.2s;
-        }
-        
-        .dropdown-menu a:hover {
-            background-color: #f1f1f1;
-        }
-        
-        .admin-navbar-dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        
-        .admin-navbar-dropdown > a::after {
-            content: ' ▼';
-            font-size: 0.7em;
-        }
-
-        .book-rating {
-            margin: 10px 0;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .rating-label {
-            font-weight: 500;
-        }
-
-        .rating-stars {
-            margin: 0 5px;
-        }
-
-        .rating-value {
-            font-weight: bold;
-            color: #ff9800;
-        }
-
-        .rating-count {
-            color: #888;
-            font-size: 12px;
-        }
-    </style>
+    
 </head>
 <body>
     <!-- ===== Navbar Admin ===== -->

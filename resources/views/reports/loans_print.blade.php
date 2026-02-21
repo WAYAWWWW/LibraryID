@@ -3,12 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>Laporan Peminjaman</title>
-  <style>
-    body{font-family: DejaVu Sans, sans-serif}
-    table{width:100%;border-collapse:collapse}
-    th,td{border:1px solid #ccc;padding:6px}
-  </style>
-}</head>
+  
+}    <link rel="stylesheet" href="{{ asset('css/reports-loans_print.css') }}">
+</head>
 <body>
   <h2>Laporan Peminjaman</h2>
   <table>

@@ -17,109 +17,11 @@
     <link rel="stylesheet" href="{{ asset('css/book.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user-sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/loans-create.css') }}">
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/js/app.js'])
     @endif
-    <style>
-        .loan-form-container {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-        .form-control {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            font-family: inherit;
-        }
-        .form-control:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
-        }
-        .form-control:disabled {
-            background-color: #f5f5f5;
-            cursor: not-allowed;
-        }
-        .help-text {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-        .btn-submit {
-            width: 100%;
-            padding: 12px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        .btn-submit:hover {
-            background: #0056b3;
-        }
-        .btn-back {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 8px 16px;
-            background: #6c757d;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        .btn-back:hover {
-            background: #5a6268;
-        }
-        .book-info-card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            border-left: 4px solid #007bff;
-        }
-        .book-info-card h4 {
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-        .book-info-card p {
-            margin: 5px 0;
-            color: #666;
-            font-size: 14px;
-        }
-        .alert {
-            padding: 12px 16px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-        .alert-danger {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        .alert-info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-    </style>
+    
 </head>
 <body class="sidebar-page">
     @include('partials.user-sidebar')

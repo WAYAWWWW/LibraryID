@@ -17,76 +17,8 @@
     <link rel="stylesheet" href="{{ asset('css/book.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user-sidebar.css') }}">
-    <style>
-        /* Book Rating Styles */
-        .book-rating {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .rating-stars {
-            margin-bottom: 0.5rem;
-        }
-
-        .stars-display {
-            font-size: 0.9rem;
-            letter-spacing: 0.2rem;
-            opacity: 0.7;
-        }
-
-        .rating-info {
-            font-size: 0.75rem;
-            color: #64748b;
-        }
-
-        .rating-average {
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .rating-count {
-            margin-left: 0.3rem;
-        }
-
-        /* Wishlist Button Styles */
-        .book-card {
-            position: relative;
-        }
-
-        .wishlist-btn-card {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(239, 68, 68, 0.9);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .wishlist-btn-card:hover {
-            background: rgba(220, 38, 38, 1);
-            transform: scale(1.1);
-        }
-
-        .wishlist-btn-card.in-wishlist {
-            background: rgba(220, 38, 38, 0.95);
-        }
-
-        .book-cover {
-            position: relative;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="{{ asset('css/books-index.css') }}">
 </head>
 <body class="sidebar-page">
     @include('partials.user-sidebar')

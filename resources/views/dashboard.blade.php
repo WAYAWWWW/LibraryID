@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/variables.css') }}">
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard-inline.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user-sidebar.css') }}">
@@ -22,31 +23,7 @@
         @vite(['resources/js/app.js'])
     @endif
 
-    <style>
-        /* Book Rating Styles */
-        .book-rating {
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.75rem;
-        }
-
-        .rating-stars {
-            display: inline-block;
-            letter-spacing: 0.2rem;
-            margin-right: 0.5rem;
-        }
-
-        .rating-value {
-            color: #1e293b;
-            font-weight: 600;
-        }
-
-        .rating-text {
-            color: #64748b;
-        }
-
-    </style>
+    
 
 </head>
 <body class="sidebar-page">
